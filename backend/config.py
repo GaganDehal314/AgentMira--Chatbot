@@ -41,7 +41,7 @@ class Settings(BaseSettings):
             "http://localhost:4173",
             "http://127.0.0.1:4173",
             "https://gagandehal314.github.io",
-            "https://GaganDehal314.github.io/AgentMira--Chatbot",
+            "https://gagandehal314.github.io/AgentMira--Chatbot",
         ]
 
         if not self.allowed_origins_raw:
