@@ -5,9 +5,9 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  // For GitHub Pages project site: https://GaganDehal314.github.io/AgentMira--Chatbot/
-  // If your actual repo slug differs, update this path accordingly.
-  base: "/AgentMira--Chatbot/",
+  // Use root base in development for easy local testing,
+  // and GitHub Pages base path only for production builds.
+  base: mode === "development" ? "/" : "/AgentMira--Chatbot/",
   server: {
     host: "::",
     port: 8080,
