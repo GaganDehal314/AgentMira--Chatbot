@@ -1,0 +1,204 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Warm, sophisticated real estate palette */
+    --background: 40 20% 98%;
+    --foreground: 220 20% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 20% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 20% 15%;
+
+    /* Refined slate blue - selection color */
+    --primary: 215 50% 45%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 40 15% 94%;
+    --secondary-foreground: 220 20% 25%;
+
+    --muted: 40 10% 92%;
+    --muted-foreground: 220 10% 50%;
+
+    --accent: 215 50% 45%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 70% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 40 15% 88%;
+    --input: 40 15% 88%;
+    --ring: 215 50% 45%;
+
+    --radius: 0.75rem;
+
+    /* Custom tokens */
+    --selection: 215 60% 50%;
+    --selection-light: 215 60% 95%;
+    --gold: 38 70% 50%;
+    --gold-light: 38 70% 95%;
+    --success: 150 50% 40%;
+    --chat-user: 215 50% 45%;
+    --chat-assistant: 40 15% 96%;
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 hsl(220 20% 15% / 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(220 20% 15% / 0.08), 0 2px 4px -2px hsl(220 20% 15% / 0.05);
+    --shadow-lg: 0 10px 15px -3px hsl(220 20% 15% / 0.08), 0 4px 6px -4px hsl(220 20% 15% / 0.05);
+    --shadow-xl: 0 20px 25px -5px hsl(220 20% 15% / 0.1), 0 8px 10px -6px hsl(220 20% 15% / 0.08);
+
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 220 20% 25%;
+    --sidebar-primary: 215 50% 45%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 40 15% 96%;
+    --sidebar-accent-foreground: 220 20% 25%;
+    --sidebar-border: 40 15% 90%;
+    --sidebar-ring: 215 50% 45%;
+  }
+
+  .dark {
+    --background: 220 25% 8%;
+    --foreground: 40 15% 95%;
+
+    --card: 220 25% 12%;
+    --card-foreground: 40 15% 95%;
+
+    --popover: 220 25% 12%;
+    --popover-foreground: 40 15% 95%;
+
+    --primary: 215 55% 55%;
+    --primary-foreground: 220 25% 8%;
+
+    --secondary: 220 20% 18%;
+    --secondary-foreground: 40 15% 90%;
+
+    --muted: 220 20% 18%;
+    --muted-foreground: 40 10% 60%;
+
+    --accent: 215 55% 55%;
+    --accent-foreground: 220 25% 8%;
+
+    --destructive: 0 65% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 20% 20%;
+    --input: 220 20% 20%;
+    --ring: 215 55% 55%;
+
+    --selection: 215 60% 55%;
+    --selection-light: 215 40% 20%;
+    --gold: 38 65% 55%;
+    --gold-light: 38 40% 20%;
+    --success: 150 45% 45%;
+    --chat-user: 215 55% 55%;
+    --chat-assistant: 220 20% 15%;
+
+    --shadow-sm: 0 1px 2px 0 hsl(0 0% 0% / 0.2);
+    --shadow-md: 0 4px 6px -1px hsl(0 0% 0% / 0.3), 0 2px 4px -2px hsl(0 0% 0% / 0.2);
+    --shadow-lg: 0 10px 15px -3px hsl(0 0% 0% / 0.3), 0 4px 6px -4px hsl(0 0% 0% / 0.2);
+    --shadow-xl: 0 20px 25px -5px hsl(0 0% 0% / 0.35), 0 8px 10px -6px hsl(0 0% 0% / 0.25);
+
+    --sidebar-background: 220 25% 10%;
+    --sidebar-foreground: 40 15% 90%;
+    --sidebar-primary: 215 55% 55%;
+    --sidebar-primary-foreground: 220 25% 8%;
+    --sidebar-accent: 220 20% 16%;
+    --sidebar-accent-foreground: 40 15% 90%;
+    --sidebar-border: 220 20% 18%;
+    --sidebar-ring: 215 55% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+@layer components {
+  .property-card-selected {
+    @apply ring-2 ring-selection shadow-lg;
+  }
+
+  .chat-bubble-user {
+    @apply bg-chat-user text-primary-foreground;
+  }
+
+  .chat-bubble-assistant {
+    @apply bg-chat-assistant text-foreground;
+  }
+
+  .filter-pill {
+    @apply px-3 py-1.5 rounded-full text-sm font-medium transition-all duration-200;
+    @apply bg-secondary text-secondary-foreground hover:bg-muted;
+  }
+
+  .filter-pill-active {
+    @apply bg-primary text-primary-foreground;
+  }
+
+  .btn-compare {
+    @apply bg-gradient-to-r from-primary to-accent text-primary-foreground;
+    @apply shadow-md hover:shadow-lg transition-all duration-300;
+  }
+
+  .glass-card {
+    @apply bg-card/80 backdrop-blur-sm border border-border/50;
+  }
+}
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.4s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.3s ease-out forwards;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideUp {
+    from { 
+      opacity: 0; 
+      transform: translateY(20px); 
+    }
+    to { 
+      opacity: 1; 
+      transform: translateY(0); 
+    }
+  }
+
+  @keyframes scaleIn {
+    from { 
+      opacity: 0; 
+      transform: scale(0.95); 
+    }
+    to { 
+      opacity: 1; 
+      transform: scale(1); 
+    }
+  }
+}
