@@ -4,7 +4,8 @@ from typing import List, Optional
 
 
 class Settings(BaseSettings):
-    mongo_uri: str = "mongodb+srv://dehalgagan2209_db_user:RfONLnY9OmzhFsO9@cluster1.9t6xa8p.mongodb.net/?appName=Cluster1"
+    # MongoDB connection string – override via MONGO_URI in your .env for production
+    mongo_uri: str = "mongodb://localhost:27017"
     mongo_db: str = "real_estate"
     # Frontend origins allowed to call this API
     # Note: includes legacy frontend (3000) and new Lovable/Vite frontend (8080/5173/4173)
@@ -18,6 +19,7 @@ class Settings(BaseSettings):
         "http://localhost:4173",
         "http://127.0.0.1:4173",
     ]
+    # Kept for backwards compatibility, but NLP route now reads OPENAI_API_KEY via os.getenv directly
     openai_api_key: Optional[str] = None
     data_dir: str = "backend/data"
     model_path: str = "complex_price_model_v2.pkl"

@@ -1,7 +1,6 @@
 from fastapi import APIRouter, HTTPException
 from pathlib import Path
-
-from backend.config import get_settings
+import os
 from backend.schemas import NLPRequest
 
 try:
@@ -113,12 +112,15 @@ def _has_searchable_filters(filters: dict) -> bool:
 
 @router.post("/parse")
 async def parse_intent(payload: NLPRequest) -> dict:
-    settings = get_settings()
     # PRIORITY 1: Try OpenAI LLM first if available
     if OpenAI is not None:
         try:
             import json
-            client = OpenAI(api_key="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")
+            api_key = os.getenv("OPENAI_API_KEY")
+            if not api_key:
+                raise RuntimeError("OPENAI_API_KEY is not set in the environment")
+
+            client = OpenAI(api_key=api_key)
             
             # Load prompt from text file
             system_prompt = load_txt_file("chatbot.txt")
