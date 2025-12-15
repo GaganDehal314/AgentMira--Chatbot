@@ -1,6 +1,11 @@
 import { Property, PropertySearchResponse, NLPParseResponse, PropertyFilters, ComparePredictionResponse } from '@/types';
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000';
+// Use localhost in development, and the Render backend URL in production.
+const API_BASE_URL =
+  import.meta.env.VITE_API_BASE_URL ||
+  (import.meta.env.DEV
+    ? "http://localhost:8000"
+    : "https://agentmira-chatbot-backend.onrender.com");
 
 // Serialize array params as repeated keys
 function buildSearchParams(filters: PropertyFilters): URLSearchParams {
