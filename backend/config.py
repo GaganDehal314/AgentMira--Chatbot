@@ -6,7 +6,7 @@ from typing import List, Optional
 
 class Settings(BaseSettings):
     # MongoDB connection string – override via MONGO_URI in your .env for production
-    mongo_uri: str = "mongodb://localhost:27017"
+    mongo_uri: str = "mongodb+srv://dehalgagan2209_db_user:6!fYx7Q5~zpJY2u@cluster1.9t6xa8p.mongodb.net/?appName=Cluster1"
     mongo_db: str = "real_estate"
 
     # Raw env override for allowed origins. This is read from the ALLOWED_ORIGINS
