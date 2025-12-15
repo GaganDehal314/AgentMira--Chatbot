@@ -8,7 +8,7 @@ from backend.config import get_settings
 @lru_cache
 def get_client() -> AsyncIOMotorClient:
     settings = get_settings()
-    return AsyncIOMotorClient(os.getenv("MONGO_URI"))
+    return AsyncIOMotorClient(settings.mongo_uri)
 
 
 def get_database() -> AsyncIOMotorDatabase:
