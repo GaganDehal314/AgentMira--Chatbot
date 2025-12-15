@@ -1,6 +1,5 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-import os
 from backend.config import get_settings
 from backend.routes import health, properties, saved, nlp, compare
 
